@@ -35,6 +35,7 @@ public class UserFacade {
         try {
             user = em.find(User.class, username);
             if (user == null || !user.verifyPassword(password)) {
+                utils.SetupTestUsers.main(new String[0]);
                 throw new AuthenticationException("Invalid user name or password");
             }
         } finally {
